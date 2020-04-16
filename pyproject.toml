@@ -1,0 +1,57 @@
+[tool.poetry]
+name = "pandas_cacher"
+version = "0.1.0"
+description = "Pandas cacher"
+authors = ["fransis kolstø <fransis.kolsto@statnett.no>"]
+
+[[tool.poetry.source]]
+name = "artifactory"
+url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple/"
+default = true
+
+[tool.poetry.dependencies]
+numpy = "*"
+pandas = "*"
+python = "^3.7"
+tables = "*"
+
+[tool.poetry.dev-dependencies]
+autopep8 = "*"
+black = { version = "*", allow-prereleases = true }
+flake8 = "*"
+ipython = "*"
+isort = "*"
+jedi = "*"
+jupyter = "*"
+mock = "*"
+pre-commit = "*"
+pytest = "*"
+pytest-cov = "*"
+rope = "*"
+yapf = "*"
+
+[tool.isort]
+line_length = 100
+multi_line_output = 3
+include_trailing_comma = true
+
+[tool.black]
+line-length = 100
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | profiling
+)/
+'''
+
+[build-system]
+requires = ["poetry>=1.0.5"]
+build-backend = "poetry.masonry.api"

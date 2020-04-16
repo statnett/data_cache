@@ -1,0 +1,37 @@
+image:
+  name: "artifactory.statnett.no/registry/statnett/python-ci-cd-statnett-3.7:latest"
+
+stages:
+  - tests
+  - deploy
+
+run_tests:
+  stage: tests
+  variables:
+    CLASSPATH: $CI_PROJECT_DIR/drivers
+  script:
+    - tox
+  artifacts:
+    paths:
+      - coverage.xml
+    expire_in: 1 day
+
+sonar_update:
+  stage: deploy
+  image:
+    name: "artifactory.statnett.no/datascience-docker-local/sonar-scanner:latest"
+  script:
+    - sonar-scanner
+      -Dsonar.host.url=${SONAR_SERVER}
+      -Dsonar.projectKey=$CI_PROJECT_NAME
+      -Dsonar.projectName=$CI_PROJECT_NAME
+      -Dsonar.projectVersion=$CI_COMMIT_TAG
+      -Dsonar.sources=$CI_PROJECT_NAME
+      -Dsonar.python.coverage.reportPath=coverage.xml
+
+publish_toolbox_to_artifactory:
+  stage: deploy
+  only:
+    - tags
+  script:
+    - publish-to-artifactory $CI_PROJECT_NAME
