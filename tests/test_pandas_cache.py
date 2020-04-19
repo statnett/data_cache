@@ -4,6 +4,7 @@ import tempfile
 from unittest.mock import Mock, patch
 
 import pandas as pd
+import pathos.multiprocessing as mp
 from pandas.testing import assert_frame_equal
 
 from pandas_cacher import pandas_cache
@@ -113,3 +114,26 @@ def test_multiple_pd_cache():
             c.pandas_getter(1, 2, 3)
             c.pandas_getter(1, 2, 4, 5)
             assert 5 == df_getter.call_count
+
+
+
+def test_pathos():
+    def df_getter(*args, **kwargs):
+        return pd.DataFrame([[1,2,3], [4,5,6]])
+
+
+    @pandas_cache("a", "b", "c")
+    def pandas_multi_getter(a, b, *args, c=False, **kwargs):
+        pool = mp.Pool(processes=8)
+        return (pool.apply(df_getter), pool.apply(df_getter), pool.apply(df_getter))
+
+
+    @pandas_cache("a", "b", "c")
+    def pandas_getter(a, b, *args, c=False, **kwargs):
+        return df_getter()
+
+    with tempfile.TemporaryDirectory() as d:
+        with patch.dict("os.environ", {"PANDAS_CACHE_PATH": str(d)}, clear=True):
+
+            pandas_multi_getter(1, 2)
+            pandas_getter(1, 2)

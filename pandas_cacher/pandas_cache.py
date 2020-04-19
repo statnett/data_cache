@@ -43,7 +43,8 @@ def get_df_hdf(
         if key in keys.keys():
             dfs = [pd.read_hdf(store, key=key_) for key_ in keys[key]]
             return tuple(dfs) if len(dfs) > 1 else dfs[0]
-        df = func(*f_args, **f_kwargs)
+    df = func(*f_args, **f_kwargs)
+    with pd.HDFStore(file_path, mode=mode) as store:
         if isinstance(df, tuple):
             for i, df_ in enumerate(df):
                 df_.to_hdf(store, key=f"{key}/df{i}")
