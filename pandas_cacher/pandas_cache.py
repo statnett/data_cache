@@ -53,6 +53,7 @@ def get_df_hdf(
         return df
 
 
+# pylint: disable=keyword-arg-before-vararg
 def pandas_cache(orig_func: pandas_function = None, *args: str) -> pandas_function:
     """Decorator for caching function calls that return pandas DataFrames.
 
