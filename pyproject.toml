@@ -2,17 +2,12 @@
 name = "pandas_cacher"
 version = "0.1.1"
 description = "Pandas cacher"
-authors = ["fransis kolstø <fransis.kolsto@statnett.no>"]
-
-[[tool.poetry.source]]
-name = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple/"
-default = true
+authors = ["Statnett Datascience <Datascience.Drift@statnett.no>"]
 
 [tool.poetry.dependencies]
 numpy = "*"
 pandas = "*"
-python = "^3.7"
+python = "^3.5"
 tables = "*"
 
 [tool.poetry.dev-dependencies]

@@ -6,10 +6,6 @@ optional = false
 python-versions = "*"
 version = "1.4.3"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Disable App Nap on OS X 10.9"
@@ -19,10 +15,6 @@ optional = false
 python-versions = "*"
 version = "0.1.0"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Atomic file writes."
@@ -30,11 +22,7 @@ marker = "sys_platform == \"win32\""
 name = "atomicwrites"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "1.3.0"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
+version = "1.4.0"
 
 [[package]]
 category = "dev"
@@ -50,24 +38,16 @@ dev = ["coverage", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.int
 docs = ["sphinx", "zope.interface"]
 tests = ["coverage", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "A tool that automatically formats Python code to conform to the PEP 8 style guide"
 name = "autopep8"
 optional = false
 python-versions = "*"
-version = "1.5.1"
+version = "1.5.2"
 
 [package.dependencies]
 pycodestyle = ">=2.5.0"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -76,10 +56,6 @@ name = "backcall"
 optional = false
 python-versions = "*"
 version = "0.1.0"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -101,25 +77,18 @@ typed-ast = ">=1.4.0"
 [package.extras]
 d = ["aiohttp (>=3.3.2)", "aiohttp-cors"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "An easy safelist-based HTML-sanitizing tool."
 name = "bleach"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-version = "3.1.4"
+version = "3.1.5"
 
 [package.dependencies]
+packaging = "*"
 six = ">=1.9.0"
 webencodings = "*"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -129,21 +98,13 @@ optional = false
 python-versions = ">=3.6.1"
 version = "3.1.0"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Composable command line interface toolkit"
 name = "click"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-version = "7.1.1"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
+version = "7.1.2"
 
 [[package]]
 category = "dev"
@@ -153,10 +114,6 @@ name = "colorama"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 version = "0.4.3"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -169,10 +126,6 @@ version = "5.1"
 [package.extras]
 toml = ["toml"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Decorators for Humans"
@@ -181,10 +134,6 @@ optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*"
 version = "4.4.2"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "XML bomb protection for Python stdlib modules"
@@ -192,10 +141,6 @@ name = "defusedxml"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 version = "0.6.0"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -208,10 +153,6 @@ version = "0.3.1.1"
 [package.extras]
 graph = ["objgraph (>=1.7.2)"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Distribution utilities"
@@ -219,10 +160,6 @@ name = "distlib"
 optional = false
 python-versions = "*"
 version = "0.3.0"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -232,10 +169,6 @@ optional = false
 python-versions = ">=2.7"
 version = "0.3"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "A platform independent file lock."
@@ -243,10 +176,6 @@ name = "filelock"
 optional = false
 python-versions = "*"
 version = "3.0.12"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -262,24 +191,16 @@ mccabe = ">=0.6.0,<0.7.0"
 pycodestyle = ">=2.5.0,<2.6.0"
 pyflakes = ">=2.1.0,<2.2.0"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "File identification library for Python"
 name = "identify"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,>=2.7"
-version = "1.4.14"
+version = "1.4.15"
 
 [package.extras]
 license = ["editdistance"]
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -296,10 +217,6 @@ zipp = ">=0.5"
 [package.extras]
 docs = ["sphinx", "rst.linker"]
 testing = ["packaging", "importlib-resources"]
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -318,10 +235,6 @@ traitlets = ">=4.1.0"
 
 [package.extras]
 test = ["pytest (!=5.3.4)", "pytest-cov", "flaky", "nose"]
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -355,10 +268,6 @@ parallel = ["ipyparallel"]
 qtconsole = ["qtconsole"]
 test = ["nose (>=0.10.1)", "requests", "testpath", "pygments", "nbformat", "ipykernel", "numpy (>=1.14)"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Vestigial utilities from IPython"
@@ -366,10 +275,6 @@ name = "ipython-genutils"
 optional = false
 python-versions = "*"
 version = "0.2.0"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -392,10 +297,6 @@ version = ">=4.0.0"
 [package.extras]
 test = ["pytest (>=3.6.0)", "pytest-cov", "mock"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "A Python utility / library to sort Python imports."
@@ -409,10 +310,6 @@ pipfile = ["pipreqs", "requirementslib"]
 pyproject = ["toml"]
 requirements = ["pipreqs", "pip-api"]
 xdg_home = ["appdirs (>=1.4.0)"]
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -429,10 +326,6 @@ parso = ">=0.7.0"
 qa = ["flake8 (3.7.9)"]
 testing = ["colorama", "docopt", "pytest (>=3.9.0,<5.0.0)"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "A very fast and expressive template engine."
@@ -446,10 +339,6 @@ MarkupSafe = ">=0.23"
 
 [package.extras]
 i18n = ["Babel (>=0.8)"]
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -473,10 +362,6 @@ version = "*"
 format = ["idna", "jsonpointer (>1.13)", "rfc3987", "strict-rfc3339", "webcolors"]
 format_nongpl = ["idna", "jsonpointer (>1.13)", "webcolors", "rfc3986-validator (>0.1.0)", "rfc3339-validator"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Jupyter metapackage. Install all the Jupyter components in one go."
@@ -492,10 +377,6 @@ jupyter-console = "*"
 nbconvert = "*"
 notebook = "*"
 qtconsole = "*"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -515,10 +396,6 @@ traitlets = "*"
 [package.extras]
 test = ["ipykernel", "ipython", "mock", "pytest"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Jupyter terminal console"
@@ -537,10 +414,6 @@ pygments = "*"
 [package.extras]
 test = ["pexpect"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Jupyter core package. A base package on which Jupyter projects rely."
@@ -553,10 +426,6 @@ version = "4.6.3"
 pywin32 = ">=1.0"
 traitlets = "*"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Safely add untrusted strings to HTML/XML markup."
@@ -564,10 +433,6 @@ name = "markupsafe"
 optional = false
 python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*"
 version = "1.1.1"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -577,10 +442,6 @@ optional = false
 python-versions = "*"
 version = "0.6.1"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "The fastest markdown parser in pure Python"
@@ -588,10 +449,6 @@ name = "mistune"
 optional = false
 python-versions = "*"
 version = "0.8.4"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -606,10 +463,6 @@ build = ["twine", "wheel", "blurb"]
 docs = ["sphinx"]
 test = ["pytest", "pytest-cov"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "More routines for operating on iterables, beyond itertools"
@@ -617,10 +470,6 @@ name = "more-itertools"
 optional = false
 python-versions = ">=3.5"
 version = "8.2.0"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -632,10 +481,6 @@ version = "0.70.9"
 
 [package.dependencies]
 dill = ">=0.3.1"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -665,10 +510,6 @@ execute = ["jupyter-client (>=5.3.1)"]
 serve = ["tornado (>=4.0)"]
 test = ["pytest", "pytest-cov", "ipykernel", "jupyter-client (>=5.3.1)", "ipywidgets (>=7)", "pebble", "mock"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "The Jupyter Notebook format"
@@ -686,10 +527,6 @@ traitlets = ">=4.1"
 [package.extras]
 test = ["testpath", "pytest", "pytest-cov"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Node.js virtual environment builder"
@@ -697,10 +534,6 @@ name = "nodeenv"
 optional = false
 python-versions = "*"
 version = "1.3.5"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -728,10 +561,6 @@ traitlets = ">=4.2.1"
 [package.extras]
 test = ["nose", "coverage", "requests", "nose-warnings-filters", "nbval", "nose-exclude", "selenium", "pytest", "pytest-cov", "nose-exclude"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "main"
 description = "Fast numerical expression evaluator for NumPy"
@@ -743,10 +572,6 @@ version = "2.7.1"
 [package.dependencies]
 numpy = ">=1.7"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "main"
 description = "NumPy is the fundamental package for array computing with Python."
@@ -754,10 +579,6 @@ name = "numpy"
 optional = false
 python-versions = ">=3.5"
 version = "1.18.3"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -770,10 +591,6 @@ version = "20.3"
 [package.dependencies]
 pyparsing = ">=2.0.2"
 six = "*"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "main"
@@ -791,10 +608,6 @@ pytz = ">=2017.2"
 [package.extras]
 test = ["pytest (>=4.0.2)", "pytest-xdist", "hypothesis (>=3.58)"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Utilities for writing pandoc filters in python"
@@ -802,10 +615,6 @@ name = "pandocfilters"
 optional = false
 python-versions = "*"
 version = "1.4.2"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -817,10 +626,6 @@ version = "0.7.0"
 
 [package.extras]
 testing = ["docopt", "pytest (>=3.0.7)"]
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -836,10 +641,6 @@ multiprocess = ">=0.70.9"
 pox = ">=0.2.7"
 ppft = ">=1.6.6.1"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Utility library for gitignore style pattern matching of file paths."
@@ -847,10 +648,6 @@ name = "pathspec"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 version = "0.8.0"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -864,10 +661,6 @@ version = "4.8.0"
 [package.dependencies]
 ptyprocess = ">=0.5"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Tiny 'shelve'-like database with concurrency support"
@@ -875,10 +668,6 @@ name = "pickleshare"
 optional = false
 python-versions = "*"
 version = "0.7.5"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -896,10 +685,6 @@ version = ">=0.12"
 [package.extras]
 dev = ["pre-commit", "tox"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "utilities for filesystem exploration and automated builds"
@@ -907,10 +692,6 @@ name = "pox"
 optional = false
 python-versions = "*"
 version = "0.2.7"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -923,17 +704,13 @@ version = "1.6.6.1"
 [package.extras]
 dill = ["dill (>=0.3.0)"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 name = "pre-commit"
 optional = false
 python-versions = ">=3.6.1"
-version = "2.2.0"
+version = "2.3.0"
 
 [package.dependencies]
 cfgv = ">=2.0.0"
@@ -947,10 +724,6 @@ virtualenv = ">=15.2"
 python = "<3.8"
 version = "*"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Python client for the Prometheus monitoring system."
@@ -961,10 +734,6 @@ version = "0.7.1"
 
 [package.extras]
 twisted = ["twisted"]
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -977,22 +746,14 @@ version = "3.0.5"
 [package.dependencies]
 wcwidth = "*"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Run a subprocess in a pseudo terminal"
-marker = "python_version >= \"3.3\" and sys_platform != \"win32\" or sys_platform != \"win32\" or os_name != \"nt\" or python_version >= \"3.3\" and sys_platform != \"win32\" and (python_version >= \"3.3\" and sys_platform != \"win32\" or sys_platform != \"win32\")"
+marker = "sys_platform != \"win32\" or os_name != \"nt\" or python_version >= \"3.3\" and sys_platform != \"win32\""
 name = "ptyprocess"
 optional = false
 python-versions = "*"
 version = "0.6.0"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -1002,10 +763,6 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "1.8.1"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Python style guide checker"
@@ -1013,10 +770,6 @@ name = "pycodestyle"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "2.5.0"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -1026,10 +779,6 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "2.1.1"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Pygments is a syntax highlighting package written in Python."
@@ -1038,10 +787,6 @@ optional = false
 python-versions = ">=3.5"
 version = "2.6.1"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Python parsing module"
@@ -1049,10 +794,6 @@ name = "pyparsing"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 version = "2.4.7"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -1064,10 +805,6 @@ version = "0.16.0"
 
 [package.dependencies]
 six = "*"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -1095,10 +832,6 @@ version = ">=0.12"
 checkqa-mypy = ["mypy (v0.761)"]
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Pytest plugin for measuring coverage."
@@ -1114,10 +847,6 @@ pytest = ">=3.6"
 [package.extras]
 testing = ["fields", "hunter", "process-tests (2.0.2)", "six", "virtualenv"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "main"
 description = "Extensions to the standard Python datetime module"
@@ -1129,21 +858,13 @@ version = "2.8.1"
 [package.dependencies]
 six = ">=1.5"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "main"
 description = "World timezone definitions, modern and historical"
 name = "pytz"
 optional = false
 python-versions = "*"
-version = "2019.3"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
+version = "2020.1"
 
 [[package]]
 category = "dev"
@@ -1154,10 +875,6 @@ optional = false
 python-versions = "*"
 version = "227"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Python bindings for the winpty library"
@@ -1167,10 +884,6 @@ optional = false
 python-versions = "*"
 version = "0.5.7"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "YAML parser and emitter for Python"
@@ -1179,10 +892,6 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 version = "5.3.1"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Python bindings for 0MQ"
@@ -1190,10 +899,6 @@ name = "pyzmq"
 optional = false
 python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*"
 version = "19.0.0"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -1217,10 +922,6 @@ traitlets = "*"
 doc = ["Sphinx (>=1.3)"]
 test = ["pytest", "mock"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Provides an abstraction layer on top of the various Qt bindings (PyQt5, PyQt4 and PySide) and additional custom QWidgets."
@@ -1229,10 +930,6 @@ optional = false
 python-versions = "*"
 version = "1.9.0"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Alternative regular expression module, to replace re."
@@ -1240,10 +937,6 @@ name = "regex"
 optional = false
 python-versions = "*"
 version = "2020.4.4"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -1256,10 +949,6 @@ version = "0.16.0"
 [package.extras]
 dev = ["pytest"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Send file to trash natively under Mac OS X, Windows and Linux."
@@ -1268,10 +957,6 @@ optional = false
 python-versions = "*"
 version = "1.5.0"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "main"
 description = "Python 2 and 3 compatibility utilities"
@@ -1279,10 +964,6 @@ name = "six"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 version = "1.14.0"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "main"
@@ -1295,10 +976,6 @@ version = "3.6.1"
 [package.dependencies]
 numexpr = ">=2.6.2"
 numpy = ">=1.9.3"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -1313,10 +990,6 @@ ptyprocess = "*"
 pywinpty = ">=0.5"
 tornado = ">=4"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Test utilities for code working with files and commands"
@@ -1328,10 +1001,6 @@ version = "0.4.4"
 [package.extras]
 test = ["pathlib2"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Python Library for Tom's Obvious, Minimal Language"
@@ -1340,10 +1009,6 @@ optional = false
 python-versions = "*"
 version = "0.10.0"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed."
@@ -1351,10 +1016,6 @@ name = "tornado"
 optional = false
 python-versions = ">= 3.5"
 version = "6.0.4"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -1372,10 +1033,6 @@ six = "*"
 [package.extras]
 test = ["pytest", "mock"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "a fork of Python 2 and 3 ast modules with type comment support"
@@ -1383,10 +1040,6 @@ name = "typed-ast"
 optional = false
 python-versions = "*"
 version = "1.4.1"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -1410,10 +1063,6 @@ version = ">=0.12,<2"
 docs = ["sphinx (>=2.0.0,<3)", "sphinx-argparse (>=0.2.5,<1)", "sphinx-rtd-theme (>=0.4.3,<1)", "towncrier (>=19.9.0rc1)", "proselint (>=0.10.2,<1)"]
 testing = ["pytest (>=4.0.0,<6)", "coverage (>=4.5.1,<6)", "pytest-mock (>=2.0.0,<3)", "pytest-env (>=0.6.2,<1)", "pytest-timeout (>=1.3.4,<2)", "packaging (>=20.0)", "xonsh (>=0.9.16,<1)"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Measures number of Terminal column cells of wide-character codes"
@@ -1422,10 +1071,6 @@ optional = false
 python-versions = "*"
 version = "0.1.9"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "Character encoding aliases for legacy web content"
@@ -1433,10 +1078,6 @@ name = "webencodings"
 optional = false
 python-versions = "*"
 version = "0.5.1"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
 
 [[package]]
 category = "dev"
@@ -1449,21 +1090,13 @@ version = "3.5.1"
 [package.dependencies]
 notebook = ">=4.4.1"
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [[package]]
 category = "dev"
 description = "A formatter for Python code."
 name = "yapf"
 optional = false
 python-versions = "*"
-version = "0.29.0"
-
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
+version = "0.30.0"
 
 [[package]]
 category = "dev"
@@ -1478,12 +1111,8 @@ version = "3.1.0"
 docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
-[package.source]
-reference = "artifactory"
-url = "https://artifactory.statnett.no/artifactory/api/pypi/pypi_statnett_ia_virtual/simple"
-
 [metadata]
-content-hash = "06bd691510ee799a499e8b6814ddc8c5cdc8f491142f7dc26cc89aab23e5a296"
+content-hash = "6048aeb19c7035aff50b31e79b10a72732a19339c13aee9684289c81cd5c3f84"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -1496,15 +1125,15 @@ appnope = [
     {file = "appnope-0.1.0.tar.gz", hash = "sha256:8b995ffe925347a2138d7ac0fe77155e4311a0ea6d6da4f5128fe4b3cbe5ed71"},
 ]
 atomicwrites = [
-    {file = "atomicwrites-1.3.0-py2.py3-none-any.whl", hash = "sha256:03472c30eb2c5d1ba9227e4c2ca66ab8287fbfbbda3888aa93dc2e28fc6811b4"},
-    {file = "atomicwrites-1.3.0.tar.gz", hash = "sha256:75a9445bac02d8d058d5e1fe689654ba5a6556a1dfd8ce6ec55a0ed79866cfa6"},
+    {file = "atomicwrites-1.4.0-py2.py3-none-any.whl", hash = "sha256:6d1784dea7c0c8d4a5172b6c620f40b6e4cbfdf96d783691f2e1302a7b88e197"},
+    {file = "atomicwrites-1.4.0.tar.gz", hash = "sha256:ae70396ad1a434f9c7046fd2dd196fc04b12f9e91ffb859164193be8b6168a7a"},
 ]
 attrs = [
     {file = "attrs-19.3.0-py2.py3-none-any.whl", hash = "sha256:08a96c641c3a74e44eb59afb61a24f2cb9f4d7188748e76ba4bb5edfa3cb7d1c"},
     {file = "attrs-19.3.0.tar.gz", hash = "sha256:f7b7ce16570fe9965acd6d30101a28f62fb4a7f9e926b3bbc9b61f8b04247e72"},
 ]
 autopep8 = [
-    {file = "autopep8-1.5.1.tar.gz", hash = "sha256:cc6be1dfd46f2c7fa00e84a357f1a269683985b09eaffb47654ed551194399eb"},
+    {file = "autopep8-1.5.2.tar.gz", hash = "sha256:152fd8fe47d02082be86e05001ec23d6f420086db56b17fc883f3f965fb34954"},
 ]
 backcall = [
     {file = "backcall-0.1.0.tar.gz", hash = "sha256:38ecd85be2c1e78f77fd91700c76e14667dc21e2713b63876c0eb901196e01e4"},
@@ -1515,16 +1144,16 @@ black = [
     {file = "black-19.10b0.tar.gz", hash = "sha256:c2edb73a08e9e0e6f65a0e6af18b059b8b1cdd5bef997d7a0b181df93dc81539"},
 ]
 bleach = [
-    {file = "bleach-3.1.4-py2.py3-none-any.whl", hash = "sha256:cc8da25076a1fe56c3ac63671e2194458e0c4d9c7becfd52ca251650d517903c"},
-    {file = "bleach-3.1.4.tar.gz", hash = "sha256:e78e426105ac07026ba098f04de8abe9b6e3e98b5befbf89b51a5ef0a4292b03"},
+    {file = "bleach-3.1.5-py2.py3-none-any.whl", hash = "sha256:2bce3d8fab545a6528c8fa5d9f9ae8ebc85a56da365c7f85180bfe96a35ef22f"},
+    {file = "bleach-3.1.5.tar.gz", hash = "sha256:3c4c520fdb9db59ef139915a5db79f8b51bc2a7257ea0389f30c846883430a4b"},
 ]
 cfgv = [
     {file = "cfgv-3.1.0-py2.py3-none-any.whl", hash = "sha256:1ccf53320421aeeb915275a196e23b3b8ae87dea8ac6698b1638001d4a486d53"},
     {file = "cfgv-3.1.0.tar.gz", hash = "sha256:c8e8f552ffcc6194f4e18dd4f68d9aef0c0d58ae7e7be8c82bee3c5e9edfa513"},
 ]
 click = [
-    {file = "click-7.1.1-py2.py3-none-any.whl", hash = "sha256:e345d143d80bf5ee7534056164e5e112ea5e22716bbb1ce727941f4c8b471b9a"},
-    {file = "click-7.1.1.tar.gz", hash = "sha256:8a18b4ea89d8820c5d0c7da8a64b2c324b4dabb695804dbfea19b9be9d88c0cc"},
+    {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
+    {file = "click-7.1.2.tar.gz", hash = "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"},
 ]
 colorama = [
     {file = "colorama-0.4.3-py2.py3-none-any.whl", hash = "sha256:7d73d2a99753107a36ac6b455ee49046802e59d9d076ef8e47b61499fa29afff"},
@@ -1590,8 +1219,8 @@ flake8 = [
     {file = "flake8-3.7.9.tar.gz", hash = "sha256:45681a117ecc81e870cbf1262835ae4af5e7a8b08e40b944a8a6e6b895914cfb"},
 ]
 identify = [
-    {file = "identify-1.4.14-py2.py3-none-any.whl", hash = "sha256:2bb8760d97d8df4408f4e805883dad26a2d076f04be92a10a3e43f09c6060742"},
-    {file = "identify-1.4.14.tar.gz", hash = "sha256:faffea0fd8ec86bb146ac538ac350ed0c73908326426d387eded0bcc9d077522"},
+    {file = "identify-1.4.15-py2.py3-none-any.whl", hash = "sha256:88ed90632023e52a6495749c6732e61e08ec9f4f04e95484a5c37b9caf40283c"},
+    {file = "identify-1.4.15.tar.gz", hash = "sha256:23c18d97bb50e05be1a54917ee45cc61d57cb96aedc06aabb2b02331edf0dbf0"},
 ]
 importlib-metadata = [
     {file = "importlib_metadata-1.6.0-py2.py3-none-any.whl", hash = "sha256:2a688cbaa90e0cc587f1df48bdc97a6eadccdcd9c35fb3f976a09e3b5016d90f"},
@@ -1824,8 +1453,8 @@ ppft = [
     {file = "ppft-1.6.6.1.tar.gz", hash = "sha256:9e2173042edd5cc9c7bee0d7731873f17fcdce0e42e4b7ab68857d0de7b631fc"},
 ]
 pre-commit = [
-    {file = "pre_commit-2.2.0-py2.py3-none-any.whl", hash = "sha256:487c675916e6f99d355ec5595ad77b325689d423ef4839db1ed2f02f639c9522"},
-    {file = "pre_commit-2.2.0.tar.gz", hash = "sha256:c0aa11bce04a7b46c5544723aedf4e81a4d5f64ad1205a30a9ea12d5e81969e1"},
+    {file = "pre_commit-2.3.0-py2.py3-none-any.whl", hash = "sha256:979b53dab1af35063a483bfe13b0fcbbf1a2cf8c46b60e0a9a8d08e8269647a1"},
+    {file = "pre_commit-2.3.0.tar.gz", hash = "sha256:f3e85e68c6d1cbe7828d3471896f1b192cfcf1c4d83bf26e26beeb5941855257"},
 ]
 prometheus-client = [
     {file = "prometheus_client-0.7.1.tar.gz", hash = "sha256:71cd24a2b3eb335cb800c7159f423df1bd4dcd5171b234be15e3f31ec9f622da"},
@@ -1874,8 +1503,8 @@ python-dateutil = [
     {file = "python_dateutil-2.8.1-py2.py3-none-any.whl", hash = "sha256:75bb3f31ea686f1197762692a9ee6a7550b59fc6ca3a1f4b5d7e32fb98e2da2a"},
 ]
 pytz = [
-    {file = "pytz-2019.3-py2.py3-none-any.whl", hash = "sha256:1c557d7d0e871de1f5ccd5833f60fb2550652da6be2693c1e02300743d21500d"},
-    {file = "pytz-2019.3.tar.gz", hash = "sha256:b02c06db6cf09c12dd25137e563b31700d3b80fcc4ad23abb7a315f2789819be"},
+    {file = "pytz-2020.1-py2.py3-none-any.whl", hash = "sha256:a494d53b6d39c3c6e44c3bec237336e14305e4f29bbf800b599253057fbb79ed"},
+    {file = "pytz-2020.1.tar.gz", hash = "sha256:c35965d010ce31b23eeb663ed3cc8c906275d6be1a34393a1d73a41febf4a048"},
 ]
 pywin32 = [
     {file = "pywin32-227-cp27-cp27m-win32.whl", hash = "sha256:371fcc39416d736401f0274dd64c2302728c9e034808e37381b5e1b22be4a6b0"},
@@ -2023,6 +1652,7 @@ testpath = [
     {file = "testpath-0.4.4.tar.gz", hash = "sha256:60e0a3261c149755f4399a1fff7d37523179a70fdc3abdf78de9fc2604aeec7e"},
 ]
 toml = [
+    {file = "toml-0.10.0-py2.7.egg", hash = "sha256:f1db651f9657708513243e61e6cc67d101a39bad662eaa9b5546f789338e07a3"},
     {file = "toml-0.10.0-py2.py3-none-any.whl", hash = "sha256:235682dd292d5899d361a811df37e04a8828a5b1da3115886b73cf81ebc9100e"},
     {file = "toml-0.10.0.tar.gz", hash = "sha256:229f81c57791a41d65e399fc06bf0848bab550a9dfd5ed66df18ce5f05e73d5c"},
 ]
@@ -2081,8 +1711,8 @@ widgetsnbextension = [
     {file = "widgetsnbextension-3.5.1.tar.gz", hash = "sha256:079f87d87270bce047512400efd70238820751a11d2d8cb137a5a5bdbaf255c7"},
 ]
 yapf = [
-    {file = "yapf-0.29.0-py2.py3-none-any.whl", hash = "sha256:cad8a272c6001b3401de3278238fdc54997b6c2e56baa751788915f879a52fca"},
-    {file = "yapf-0.29.0.tar.gz", hash = "sha256:712e23c468506bf12cadd10169f852572ecc61b266258422d45aaf4ad7ef43de"},
+    {file = "yapf-0.30.0-py2.py3-none-any.whl", hash = "sha256:3abf61ba67cf603069710d30acbc88cfe565d907e16ad81429ae90ce9651e0c9"},
+    {file = "yapf-0.30.0.tar.gz", hash = "sha256:3000abee4c28daebad55da6c85f3cd07b8062ce48e2e9943c8da1b9667d48427"},
 ]
 zipp = [
     {file = "zipp-3.1.0-py3-none-any.whl", hash = "sha256:aa36550ff0c0b7ef7fa639055d797116ee891440eac1a56f378e2d3179e0320b"},

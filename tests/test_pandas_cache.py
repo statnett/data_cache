@@ -116,17 +116,14 @@ def test_multiple_pd_cache():
             assert 5 == df_getter.call_count
 
 
-
 def test_pathos():
     def df_getter(*args, **kwargs):
-        return pd.DataFrame([[1,2,3], [4,5,6]])
-
+        return pd.DataFrame([[1, 2, 3], [4, 5, 6]])
 
     @pandas_cache("a", "b", "c")
     def pandas_multi_getter(a, b, *args, c=False, **kwargs):
         pool = mp.Pool(processes=8)
         return (pool.apply(df_getter), pool.apply(df_getter), pool.apply(df_getter))
-
 
     @pandas_cache("a", "b", "c")
     def pandas_getter(a, b, *args, c=False, **kwargs):
