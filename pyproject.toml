@@ -1,14 +1,15 @@
 [tool.poetry]
 name = "pandas_cacher"
-version = "0.1.2"
+version = "0.1.3"
 description = "Pandas cacher"
 authors = ["Statnett Datascience <Datascience.Drift@statnett.no>"]
 
 [tool.poetry.dependencies]
 numpy = "*"
 pandas = "*"
-python = "^3.5"
+python = "^3.6"
 tables = "*"
+h5py = "^2.10.0"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "*"

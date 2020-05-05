@@ -1,11 +1,11 @@
-# Pandas cache
+# Table cache
 
 Works by hashing the combinations of arguments of a function call with
-the function name to create a unique id of a DataFrame retrieval.  If
+the function name to create a unique id of a table retrieval.  If
 the function call is new the original function will be called, and the
-resulting DataFrame(s) will be stored in a HDFStore indexed by the
+resulting tables(s) will be stored in a HDFStore indexed by the
 hashed key.  Next time the function is called with the same args the
-DataFrame(s) will be retrieved from the store instead of executing the
+tables(s) will be retrieved from the store instead of executing the
 function.
 
 The hashing of the arguments is done by first applying str() on the
@@ -23,12 +23,12 @@ database-clients.
 
 The module automatically creates a `cache/data.h5` relative to
 `__main__`, to change this set the environment variable
-`PANDAS_CACHE_PATH` to be the desired directory of the `data.h5` file.
+`CACHE_PATH` to be the desired directory of the `data.h5` file.
 
 #### Disabling the cache with env-variable
 
-To disable the pandas cache set the environment variable
-`DISABLE_PANDAS_CACHE` to `TRUE`.
+To disable the cache set the environment variable
+`DISABLE_CACHE` to `TRUE`.
 
 ### Usage
 
@@ -154,8 +154,7 @@ import pandas as pd
 @pandas_cache("a", "c")
 def simple_func(a, *args, **kwargs):
     sleep(5)
-    return pd.DataFrame([[1,2,3], [2,3,4]]), \
-           pd.DataFrame([[1,2,3], [2,3,4]]) * 10
+    return pd.DataFrame([[1,2,3], [2,3,4]]), pd.DataFrame([[1,2,3], [2,3,4]]) * 10
 
 
 t0 = datetime.now()
@@ -179,4 +178,50 @@ print(datetime.now() - t0)
 0  10  20  30
 1  20  30  40)
 0:00:00.019578
+```
+
+#### Disabling cache for tests
+
+Caching can be disabled using the environment variable DISABLE_CACHE to TRUE
+
+```python
+from mock import patch
+def test_cached_function():
+    with patch.dict("os.environ", {"DISABLE_PANDAS_CACHE": "TRUE"}, clear=True):
+        assert cached_function() == target
+```
+
+#### Numpy caching
+
+```python
+from pandas_cacher import numpy_cache
+from time import sleep
+from datetime import datetime
+import numpy as np
+
+
+@numpy_cache("a", "c")
+def simple_func(a, *args, **kwargs):
+    sleep(5)
+    return np.array([[1, 2, 3], [2, 3, 4]]), np.array([[1, 2, 3], [2, 3, 4]]) * 10
+
+
+t0 = datetime.now()
+print(simple_func(1, b=2, c=True))
+print(datetime.now() - t0)
+
+t0 = datetime.now()
+print(simple_func(a=1, b=3, c=True))
+print(datetime.now() - t0)
+```
+
+```commandline
+(array([[1, 2, 3],
+       [2, 3, 4]]), array([[10, 20, 30],
+       [20, 30, 40]]))
+0:00:05.009084
+(array([[1, 2, 3],
+       [2, 3, 4]]), array([[10, 20, 30],
+       [20, 30, 40]]))
+0:00:00.002000
 ```
