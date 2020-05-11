@@ -4,7 +4,6 @@ import inspect
 import json
 import os
 import pathlib
-from collections import defaultdict
 from typing import Any, Callable, Dict, Iterable, Tuple, Type, Union
 
 import h5py
@@ -82,12 +81,12 @@ def store_factory(data_storer: Type[StoreClass]) -> Type[store_function]:
         file_path = get_path() / "data.h5"
         mode = "r+" if file_path.exists() else "w"
         with data_storer(file_path, mode=mode) as store:
-            keys = defaultdict(list)
-            for s_key in store.keys():
-                s_key_ = s_key.split("-")[0] if "-" in s_key else s_key
-                keys[s_key_.strip("/")].append(s_key)
-            if key in keys.keys():
-                arrays = [store[key_][:] for key_ in keys[key]]
+            arrays = [
+                store[store_key][:]
+                for store_key in store.keys()
+                if store_key.split("-")[0].strip("/") == key
+            ]
+            if arrays:
                 return tuple(arrays) if len(arrays) > 1 else arrays[0]
         data = func(*f_args, **f_kwargs)
         with data_storer(file_path, mode=mode) as store:
