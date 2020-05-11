@@ -4,6 +4,7 @@ import inspect
 import json
 import os
 import pathlib
+from collections import defaultdict
 from typing import Any, Callable, Dict, Iterable, Tuple, Type, Union
 
 import h5py
@@ -45,12 +46,17 @@ class StoreClass:
 
 
 class PandasStore(pd.HDFStore):
+
     def create_dataset(self, key: str, data: pd.DataFrame) -> None:
         data.to_hdf(self, key)
 
     def __getitem__(self, key: str) -> pd.DataFrame:
-        return pd.read_hdf(self, key=key)
+        dfs = [pd.read_hdf(self, key=k) for k in self.keys() if key in k]
+        return tuple(dfs) if len(dfs) > 1 else dfs[0]
 
+
+def add_metadata():
+    pass
 
 def store_factory(data_storer: Type[StoreClass]) -> Type[store_function]:
     """Factory function for creating storing functions for the cache decorator.
@@ -63,13 +69,19 @@ def store_factory(data_storer: Type[StoreClass]) -> Type[store_function]:
     """
 
     def store_func(
-        key: str, func: cache_able_function, f_args: Tuple[Any], f_kwargs: Dict[str, Any],
+        func_key: str,
+        arg_key: str,
+        func: cache_able_function,
+        f_args: Tuple[Any],
+        f_kwargs: Dict[str, Any],
+        metadata: dict = None,
+        group_metadata: dict = None,
     ) -> cached_data_type:
         """Retrieves stored data if key exists in stored data if the key is new, retrieves data from
         decorated function & stores the result with the given key.
 
         Args:
-            key: unique key used to retrieve/store data
+            arg_key: unique key used to retrieve/store data
             func: original cached function
             f_args: args to pass to the function
             f_kwargs: kwargs to pass to the function
@@ -79,24 +91,21 @@ def store_factory(data_storer: Type[StoreClass]) -> Type[store_function]:
 
         """
         file_path = get_path() / "data.h5"
-        mode = "r+" if file_path.exists() else "w"
-        with data_storer(file_path, mode=mode) as store:
-            arrays = [
-                store[store_key][:]
-                for store_key in store.keys()
-                if store_key.split("-")[0].strip("/") == key
-            ]
-            if arrays:
-                return tuple(arrays) if len(arrays) > 1 else arrays[0]
+        path = f"/{func_key}/{arg_key}"
+        with data_storer(file_path, mode="a") as store:
+            if store.__contains__(path):
+                data = store[path]
+                if isinstance(data, h5py.Group):
+                    return tuple([store[f"{path}/{data_idx}"][:] for data_idx in data.keys()])
+                return data[:]
         data = func(*f_args, **f_kwargs)
-        with data_storer(file_path, mode=mode) as store:
+        with data_storer(file_path, mode="a") as store:
             if isinstance(data, tuple):
                 for i, data_ in enumerate(data):
-                    store.create_dataset(f"{key}-data{i}", data=data_)
+                    store.create_dataset(f"{path}/data{i}", data=data_)
             else:
-                store.create_dataset(key, data=data)
+                store.create_dataset(path, data=data)
             return data
-
     return store_func
 
 
@@ -141,13 +150,9 @@ def cache_decorator_factory(table_getter: Type[store_function]) -> Type[cache_ab
                 full_args = full_args if not args else {arg: full_args[arg] for arg in args}
                 full_args.pop("self", "")
                 full_args = {k: str(v) for k, v in full_args.items()}
-                key = (
-                    "df"
-                    + hashlib.md5(
-                        (func.__name__ + json.dumps(full_args)).encode("utf-8")
-                    ).hexdigest()
-                )
-                return table_getter(key, func, f_args, f_kwargs)
+                group = "a" + hashlib.md5(inspect.getsource(func).encode("utf-8")).hexdigest()
+                key = "a" + hashlib.md5(json.dumps(full_args).encode("utf-8")).hexdigest()
+                return table_getter(group, key, func, f_args, f_kwargs)
 
             return wrapped
 
