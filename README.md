@@ -225,3 +225,50 @@ print(datetime.now() - t0)
        [20, 30, 40]]))
 0:00:00.002000
 ```
+
+#### Metadata
+
+Metadata is automatically stored with the data on the group node containing the
+DataFrame/Array.
+
+```python
+from pandas_cacher import numpy_cache, pandas_cache, read_metadata
+import pandas as pd
+import numpy as np
+from datetime import datetime
+
+
+@pandas_cache
+def function1(a, *args, b=1, **kwargs):
+    return pd.DataFrame()
+
+@numpy_cache
+def function2(a, *args, b=1, **kwargs):
+    return np.array([])
+
+function1(1, True, datetime.date(2019, 11, 11))
+function2(2, False, b=2, c=1.1)
+read_metadata("path_to_data.h5")
+```
+results:
+```json
+[{
+    "/a86f0a323bf20998b5deda81e9f90bb49/a5d320e5dcdc5d3f35a4ca366980b2dc1": {
+        "a": "1",
+        "arglist": "(True, datetime.date(2019, 11, 11))",
+        "b": "1",
+        "date_stored": "01/05/2020, 10:00:00",
+        "function_name": "function1",
+        "module_path": "path_to_module"
+    },
+    "/a56ad8af46bc5fd8b9320b00b12e6c115/a62734531fc99855292c9db04d5eba60a": {
+        "a": "2",
+        "arglist": "(False,)",
+        "b": "2",
+        "c": "1.1",
+        "date_stored": "01/05/2020, 10:00:00",
+        "function_name": "function2",
+        "module_path":  "path_to_module"
+    }
+}]
+```

@@ -1,14 +1,17 @@
 import datetime
 import os
+import pathlib
+import sys
 import tempfile
 from unittest.mock import Mock, patch
 
 import numpy as np
 import pandas as pd
 import pathos.multiprocessing as mp
+import pytest
 from pandas.testing import assert_frame_equal
 
-from pandas_cacher import numpy_cache, pandas_cache
+from pandas_cacher import numpy_cache, pandas_cache, read_metadata
 
 
 def test_pd_cache():
@@ -223,6 +226,46 @@ def test_multiple_np_cache():
             assert 5 == array_getter.call_count
 
 
+@patch("pandas_cacher.cache_tools.datetime")
+def test_metadata(d_m):
+    d_m.now.return_value = datetime.datetime(2020, 1, 1, 10)
+    c_path = str(pathlib.Path(__file__).absolute())
+    td = {
+        "/a86f0a323bf20998b5deda81e9f90bb49/a5d320e5dcdc5d3f35a4ca366980b2dc1": {
+            "a": "1",
+            "arglist": "(True, datetime.date(2019, 11, 11))",
+            "b": "1",
+            "date_stored": "01/01/2020, 10:00:00",
+            "function_name": "function1",
+            "module_path": c_path,
+        },
+        "/a56ad8af46bc5fd8b9320b00b12e6c115/a62734531fc99855292c9db04d5eba60a": {
+            "a": "2",
+            "arglist": "(False,)",
+            "b": "2",
+            "c": "1.1",
+            "date_stored": "01/01/2020, 10:00:00",
+            "function_name": "function2",
+            "module_path": c_path,
+        },
+    }
+
+    @pandas_cache
+    def function1(a, *args, b=1, **kwargs):
+        return pd.DataFrame()
+
+    @numpy_cache
+    def function2(a, *args, b=1, **kwargs):
+        return np.array([])
+
+    with tempfile.TemporaryDirectory() as d:
+        with patch.dict("os.environ", {"CACHE_PATH": str(d)}, clear=True):
+            function1(1, True, datetime.date(2019, 11, 11))
+            function2(2, False, b=2, c=1.1)
+            assert read_metadata(os.path.join(d, "data.h5")) == td
+
+
+@pytest.mark.skipif(sys.platform.startswith("win"), reason="Test hangs on windows")
 def test_pathos():
     def df_getter(*args, **kwargs):
         return pd.DataFrame([[1, 2, 3], [4, 5, 6]])
