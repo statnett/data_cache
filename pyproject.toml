@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "pandas_cacher"
+name = "data_cache"
 version = "0.1.4"
-description = "Pandas cacher"
+description = "Data Cache"
 authors = ["Statnett Datascience <Datascience.Drift@statnett.no>"]
 
 [tool.poetry.dependencies]

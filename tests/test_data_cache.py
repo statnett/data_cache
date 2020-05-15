@@ -11,7 +11,7 @@ import pathos.multiprocessing as mp
 import pytest
 from pandas.testing import assert_frame_equal
 
-from pandas_cacher import numpy_cache, pandas_cache, read_metadata
+from data_cache import numpy_cache, pandas_cache, read_metadata
 
 
 def test_pd_cache():
@@ -226,7 +226,7 @@ def test_multiple_np_cache():
             assert 5 == array_getter.call_count
 
 
-@patch("pandas_cacher.cache_tools.datetime")
+@patch("data_cache.cache_tools.datetime")
 def test_metadata(d_m):
     d_m.now.return_value = datetime.datetime(2020, 1, 1, 10)
     c_path = str(pathlib.Path(__file__).absolute())

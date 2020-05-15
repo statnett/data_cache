@@ -1,4 +1,4 @@
-# Table cache
+# Data cache
 
 Works by hashing the combinations of arguments of a function call with
 the function name to create a unique id of a table retrieval.  If
@@ -35,7 +35,7 @@ To disable the cache set the environment variable
 #### Decorating functions
 
 ```python
-from pandas_cacher import pandas_cache
+from data_cache import pandas_cache
 from time import sleep
 from datetime import datetime
 import pandas as pd
@@ -70,7 +70,7 @@ print(datetime.now() - t0)
 The decorator ignores arguments named 'self' such that it will work across different instances of the same object.
 
 ```python
-from pandas_cacher import pandas_cache
+from data_cache import pandas_cache
 from time import sleep
 from datetime import datetime
 import pandas as pd
@@ -111,7 +111,7 @@ print(datetime.now() - t0)
 #### Selecting arguments
 
 ```python
-from pandas_cacher import pandas_cache
+from data_cache import pandas_cache
 from time import sleep
 from datetime import datetime
 import pandas as pd
@@ -145,7 +145,7 @@ print(datetime.now() - t0)
 #### Multi-DataFrame returns
 
 ```python
-from pandas_cacher import pandas_cache
+from data_cache import pandas_cache
 from time import sleep
 from datetime import datetime
 import pandas as pd
@@ -187,14 +187,14 @@ Caching can be disabled using the environment variable DISABLE_CACHE to TRUE
 ```python
 from mock import patch
 def test_cached_function():
-    with patch.dict("os.environ", {"DISABLE_PANDAS_CACHE": "TRUE"}, clear=True):
+    with patch.dict("os.environ", {"DISABLE_CACHE": "TRUE"}, clear=True):
         assert cached_function() == target
 ```
 
 #### Numpy caching
 
 ```python
-from pandas_cacher import numpy_cache
+from data_cache import numpy_cache
 from time import sleep
 from datetime import datetime
 import numpy as np
@@ -232,7 +232,7 @@ Metadata is automatically stored with the data on the group node containing the
 DataFrame/Array.
 
 ```python
-from pandas_cacher import numpy_cache, pandas_cache, read_metadata
+from data_cache import numpy_cache, pandas_cache, read_metadata
 import pandas as pd
 import numpy as np
 from datetime import datetime
@@ -252,7 +252,7 @@ read_metadata("path_to_data.h5")
 ```
 results:
 ```json
-[{
+{
     "/a86f0a323bf20998b5deda81e9f90bb49/a5d320e5dcdc5d3f35a4ca366980b2dc1": {
         "a": "1",
         "arglist": "(True, datetime.date(2019, 11, 11))",
@@ -270,5 +270,5 @@ results:
         "function_name": "function2",
         "module_path":  "path_to_module"
     }
-}]
+}
 ```
