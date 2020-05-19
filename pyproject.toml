@@ -1,8 +1,12 @@
 [tool.poetry]
-name = "data_cache"
-version = "0.1.4"
-description = "Data Cache"
 authors = ["Statnett Datascience <Datascience.Drift@statnett.no>"]
+description = "Data Cache"
+keywords = ["cache", "pandas", "numpy", "decorator"]
+license = "MIT"
+name = "data_cache"
+readme = "README.md"
+repository = "https://github.com/statnett/data_cache"
+version = "0.1.4"
 
 [tool.poetry.dependencies]
 numpy = "*"
