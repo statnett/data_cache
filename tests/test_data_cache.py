@@ -3,6 +3,7 @@ import os
 import pathlib
 import sys
 import tempfile
+import warnings
 from unittest.mock import Mock, patch
 
 import numpy as np
@@ -120,6 +121,65 @@ def test_np_cache():
             numpy_getter_clean(1, 2)
             numpy_getter_clean(1, 2)
             assert 2 == array_getter.call_count
+
+
+def test_numpy_data_types():
+    int_types = [np.int8, np.int16, np.int32, np.int64, np.uint8, np.uint16, np.uint32, np.uint64]
+    float_types = [np.float16, np.float32, np.float64]
+
+    @numpy_cache
+    def array_getter(dtype, is_int=True):
+        if is_int:
+            return np.random.randint(
+                np.iinfo(dtype).min, np.iinfo(dtype).max, size=(10, 10, 10), dtype=dtype
+            ).astype(dtype)
+        return np.random.uniform(-10, 10, size=(10, 10, 10)).astype(dtype)
+
+    with tempfile.TemporaryDirectory() as d:
+        with patch.dict("os.environ", {"CACHE_PATH": str(d)}, clear=True):
+            for dtype in int_types:
+                np.testing.assert_equal(array_getter(dtype), array_getter(dtype))
+            for dtype in float_types:
+                np.testing.assert_equal(array_getter(dtype, False), array_getter(dtype, False))
+
+
+def test_pandas_data_types():
+    warnings.simplefilter(action="ignore", category=pd.errors.PerformanceWarning)
+    df = pd.DataFrame(
+        {
+            "obj": [1, "a", True],
+            "inty": [1, 2, 3],
+            "floaty": [1.0, 2.0, 3.0],
+            "booly": [True, True, False],
+            "daty": pd.date_range(start="1/1/2018", periods=3),
+            "timy": pd.to_timedelta(np.arange(3), unit="d"),
+            "caty": [["aaa", "bbb", "ccc"], ["a"], []],
+        }
+    )
+
+    @pandas_cache
+    def get_df(a):
+        return df
+
+    with tempfile.TemporaryDirectory() as d:
+        with patch.dict("os.environ", {"CACHE_PATH": str(d)}, clear=True):
+            assert_frame_equal(get_df(1), get_df(1))
+
+
+def test_pandas_multiindex():
+    ix = [[f"ix_{i}" for i in range(100)], ["a" if i % 2 == 0 else "b" for i in range(100)]]
+
+    df = pd.DataFrame(
+        {"A": np.random.normal(size=100), "B": np.random.randint(0, 2, size=100)}, index=ix
+    )
+
+    @pandas_cache
+    def get_df(a):
+        return df
+
+    with tempfile.TemporaryDirectory() as d:
+        with patch.dict("os.environ", {"CACHE_PATH": str(d)}, clear=True):
+            assert_frame_equal(get_df(1), get_df(1))
 
 
 def test_multiple_pd_cache():
