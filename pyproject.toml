@@ -21,14 +21,10 @@ black = { version = "*", allow-prereleases = true }
 flake8 = "*"
 ipython = "*"
 isort = "*"
-jedi = "*"
-jupyter = "*"
 mock = "*"
 pre-commit = "*"
 pytest = "*"
 pytest-cov = "*"
-rope = "*"
-yapf = "*"
 pathos = "^0.2.5"
 
 [tool.isort]

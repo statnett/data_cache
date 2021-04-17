@@ -16,34 +16,25 @@ jobs:
 
       - name: Get full python version
         id: full-python-version
-        shell: bash
         run: echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
 
-      - name: Install poetry
-        shell: bash
-        run: |
-          curl -fsS -o get-poetry.py https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
-          python get-poetry.py --preview -y
-          echo "PATH=$HOME/.poetry/bin:$PATH" >> $GITHUB_ENV
-      - name: Configure poetry
-        shell: bash
-        run: poetry config virtualenvs.in-project true
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1.1.3
 
       - name: Set up cache
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         id: cache
         with:
           path: .venv
-          key: venv-ubuntu-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Ensure cache is healthy
         if: steps.cache.outputs.cache-hit == 'true'
-        shell: bash
         run: poetry run pip --version >/dev/null 2>&1 || rm -rf .venv
 
       - name: Install dependencies
-        shell: bash
-        run: poetry install
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
 
       - name: Linting
         run: |
@@ -51,16 +42,18 @@ jobs:
 
   Tests:
     needs: Linting
-    name: Ubuntu / ${{ matrix.python-version }}
-    runs-on: Ubuntu-latest
+    name: ${{ matrix.os }} / ${{ matrix.python-version }}
     strategy:
+      fail-fast: true
       matrix:
-        python-version: [3.6, 3.7, 3.8]
+        os: [ "ubuntu-latest", "macos-latest" ]
+        python-version: ['3.6', '3.7', '3.8']
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -70,24 +63,41 @@ jobs:
         run: echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
 
       - name: Install and configure Poetry
-        uses: snok/install-poetry@v1.1.3
+        uses: snok/install-poetry@v1.1.4
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
 
       - name: Set up cache
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         id: cache
         with:
           path: .venv
-          key: venv-Ubuntu-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Ensure cache is healthy
         if: steps.cache.outputs.cache-hit == 'true'
-        shell: bash
         run: poetry run pip --version >/dev/null 2>&1 || rm -rf .venv
 
       - name: Install dependencies
-        shell: bash
-        run: poetry install
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
 
       - name: Run pytest
-        shell: bash
-        run: poetry run pytest -q tests
+        if: ${{ ( runner.os != 'Linux' ) || ( matrix.python-version  != '3.8' ) }}
+        run: |
+          source $VENV
+          pytest -q tests
+
+      - name: Run pytest with coverage
+        if: ${{ ( runner.os == 'Linux' ) && ( matrix.python-version  == '3.8' ) }}
+        run: |
+          source $VENV
+          pytest -q --cov=data_cache --cov-report=xml tests
+
+      - name: Upload coverage
+        if: ${{ ( runner.os == 'Linux' ) && ( matrix.python-version  == '3.8' ) }}
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage.xml
+          fail_ci_if_error: true
