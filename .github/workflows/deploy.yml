@@ -21,16 +21,10 @@ jobs:
         shell: bash
         run: echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
 
-      - name: Install poetry
-        shell: bash
-        run: |
-          curl -fsS -o get-poetry.py https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
-          python get-poetry.py --preview -y
-          echo "PATH=$HOME/.poetry/bin:$PATH" >> $GITHUB_ENV
-
-      - name: Configure poetry
-        shell: bash
-        run: poetry config virtualenvs.in-project true
+      - name: Install and configure Poetry
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: 1.1.6
 
       - name: Install dependencies
         shell: bash

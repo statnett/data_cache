@@ -10,10 +10,10 @@ version = "0.1.5"
 
 [tool.poetry.dependencies]
 numpy = "*"
-pandas = "^1.0.0"
+pandas = "*"
 python = "^3.6.1"
 tables = "*"
-h5py = "^2.10.0"
+h5py = "*"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "*"
@@ -25,7 +25,7 @@ mock = "*"
 pre-commit = "*"
 pytest = "*"
 pytest-cov = "*"
-pathos = "^0.2.5"
+pathos = "*"
 
 [tool.isort]
 line_length = 100
