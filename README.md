@@ -1,9 +1,7 @@
 [![PyPI version](https://img.shields.io/pypi/v/data-cache)](https://pypi.org/project/data-cache/)
 [![Python Versions](https://img.shields.io/pypi/pyversions/data-cache)](https://pypi.org/project/data-cache/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![](https://github.com/statnett/data_cache/workflows/Tests/badge.svg)](https://github.com/statnett/data_cache/actions?query=workflow%3ATests)
-[![codecov](https://codecov.io/gh/statnett/data_cache/branch/master/graph/badge.svg)](https://codecov.io/gh/statnett/data_cache)
 
 # Data cache
 
