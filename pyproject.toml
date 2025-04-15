@@ -6,7 +6,7 @@ keywords = ["cache", "pandas", "numpy", "decorator", "memoization"]
 license = "MIT"
 readme = "README.md"
 requires-python = ">=3.10"
-version = "0.1.6"
+dynamic = ["version"]
 
 dependencies = [
   "numpy",
@@ -21,6 +21,10 @@ dev-dependencies = [
   "pytest",
   "pathos"
 ]
+
+[tool.setuptools_scm]
+version_scheme="release-branch-semver"
+local_scheme = "no-local-version"
 
 [tool.ruff]
 line-length = 120

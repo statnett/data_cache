@@ -172,7 +172,6 @@ wheels = [
 
 [[package]]
 name = "data-cache"
-version = "0.1.6"
 source = { editable = "." }
 dependencies = [
     { name = "h5py" },
