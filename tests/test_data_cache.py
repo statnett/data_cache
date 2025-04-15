@@ -40,7 +40,6 @@ def test_pd_cache():
 
     with tempfile.TemporaryDirectory() as d:
         with patch.dict("os.environ", {"CACHE_PATH": str(d)}, clear=True):
-
             df1 = pandas_getter_clean(1, 32)
             df2 = pandas_getter_clean(1, 32)
             assert_frame_equal(df1, df2)
@@ -94,7 +93,6 @@ def test_np_cache():
 
     with tempfile.TemporaryDirectory() as d:
         with patch.dict("os.environ", {"CACHE_PATH": str(d)}, clear=True):
-
             a1 = numpy_getter_clean(1, 32)
             a2 = numpy_getter_clean(1, 32)
             np.testing.assert_equal(a1, a2)
@@ -130,9 +128,9 @@ def test_numpy_data_types():
     @numpy_cache
     def array_getter(dtype, is_int=True):
         if is_int:
-            return np.random.randint(
-                np.iinfo(dtype).min, np.iinfo(dtype).max, size=(10, 10, 10), dtype=dtype
-            ).astype(dtype)
+            return np.random.randint(np.iinfo(dtype).min, np.iinfo(dtype).max, size=(10, 10, 10), dtype=dtype).astype(
+                dtype
+            )
         return np.random.uniform(-10, 10, size=(10, 10, 10)).astype(dtype)
 
     with tempfile.TemporaryDirectory() as d:
@@ -169,9 +167,7 @@ def test_pandas_data_types():
 def test_pandas_multiindex():
     ix = [[f"ix_{i}" for i in range(100)], ["a" if i % 2 == 0 else "b" for i in range(100)]]
 
-    df = pd.DataFrame(
-        {"A": np.random.normal(size=100), "B": np.random.randint(0, 2, size=100)}, index=ix
-    )
+    df = pd.DataFrame({"A": np.random.normal(size=100), "B": np.random.randint(0, 2, size=100)}, index=ix)
 
     @pandas_cache
     def get_df(a):
@@ -207,7 +203,6 @@ def test_multiple_pd_cache():
 
     with tempfile.TemporaryDirectory() as d:
         with patch.dict("os.environ", {"CACHE_PATH": str(d)}, clear=True):
-
             df1, df2, df3 = pandas_getter(1, 2)
             df11, df12, df13 = pandas_getter(1, 2)
 
@@ -259,7 +254,6 @@ def test_multiple_np_cache():
 
     with tempfile.TemporaryDirectory() as d:
         with patch.dict("os.environ", {"CACHE_PATH": str(d)}, clear=True):
-
             df1, df2, df3 = numpy_getter(1, 2)
             df11, df12, df13 = numpy_getter(1, 2)
 
@@ -341,6 +335,5 @@ def test_pathos():
 
     with tempfile.TemporaryDirectory() as d:
         with patch.dict("os.environ", {"CACHE_PATH": str(d)}, clear=True):
-
             pandas_multi_getter(1, 2)
             pandas_getter(1, 2)

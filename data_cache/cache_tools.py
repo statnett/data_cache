@@ -124,7 +124,7 @@ def extract_args(
     return full_args
 
 
-def store_factory(data_storer: Type[StoreClass],) -> Type[store_function]:
+def store_factory(data_storer: Type[StoreClass]) -> Type[store_function]:
     """Factory function for creating storing functions for the cache decorator.
 
     Args:
@@ -163,9 +163,7 @@ def store_factory(data_storer: Type[StoreClass],) -> Type[store_function]:
         with data_storer(file_path, mode="a") as store:
             if store.__contains__(path):
                 if isinstance(store[path], h5py.Group) and "array" not in store[path].keys():
-                    return tuple(
-                        [store[f"{path}/{data_idx}{suffix}"][:] for data_idx in store[path].keys()]
-                    )
+                    return tuple([store[f"{path}/{data_idx}{suffix}"][:] for data_idx in store[path].keys()])
                 return store[f"{path}{suffix}"][:]
         data = func(*f_args, **f_kwargs)
         with data_storer(file_path, mode="a") as store:
@@ -183,9 +181,7 @@ def store_factory(data_storer: Type[StoreClass],) -> Type[store_function]:
 
 def cache_decorator_factory(table_getter: Type[store_function]) -> Type[cache_able_function]:
     # pylint: disable=keyword-arg-before-vararg
-    def cache_decorator(
-        orig_func: cache_able_function = None, *args: str
-    ) -> Type[cache_able_function]:
+    def cache_decorator(orig_func: cache_able_function = None, *args: str) -> Type[cache_able_function]:
         if isinstance(orig_func, str):
             args = list(args) + [orig_func]
             orig_func = None
