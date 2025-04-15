@@ -1,54 +1,30 @@
-[tool.poetry]
-authors = ["Statnett Datascience <Datascience.Drift@statnett.no>"]
-description = "Data Cache"
-keywords = ["cache", "pandas", "numpy", "decorator"]
-license = "MIT"
+[project]
 name = "data_cache"
+authors = [{name="Statnett DataScience", email="Datascience.Drift@Statnett.no"}]
+description = "Python data cache decorator"
+keywords = ["cache", "pandas", "numpy", "decorator", "memoization"]
+license = "MIT"
 readme = "README.md"
-repository = "https://github.com/statnett/data_cache"
+requires-python = ">=3.10"
 version = "0.1.6"
 
-[tool.poetry.dependencies]
-numpy = "*"
-pandas = "*"
-python = "^3.6.1"
-tables = "*"
-h5py = "*"
+dependencies = [
+  "numpy",
+  "pandas",
+  "tables",
+  "h5py",
+]
 
-[tool.poetry.dev-dependencies]
-autopep8 = "*"
-black = { version = "*", allow-prereleases = true }
-flake8 = "*"
-ipython = "*"
-isort = "*"
-mock = "*"
-pre-commit = "*"
-pytest = "*"
-pytest-cov = "*"
-pathos = "*"
+[tool.uv]
+dev-dependencies = [
+  "pre-commit",
+  "pytest",
+  "pathos"
+]
 
-[tool.isort]
-line_length = 100
-multi_line_output = 3
-include_trailing_comma = true
-
-[tool.black]
-line-length = 100
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.git
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-  | profiling
-)/
-'''
+[tool.ruff]
+line-length = 120
 
 [build-system]
-requires = ["poetry>=1.0.5"]
-build-backend = "poetry.masonry.api"
+requires = ["setuptools>=64", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
