@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Install the latest version of uv and set the python version
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v6
         with:
           python-version: ${{ matrix.python-version }}
       - name: Run linting
@@ -30,7 +30,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Install the latest version of uv and set the python version
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v6
         with:
           python-version: ${{ matrix.python-version }}
       - name: Test with python ${{ matrix.python-version }}
