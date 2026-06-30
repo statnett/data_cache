@@ -150,7 +150,7 @@ def test_pandas_data_types():
             "floaty": [1.0, 2.0, 3.0],
             "booly": [True, True, False],
             "daty": pd.date_range(start="1/1/2018", periods=3),
-            "timy": pd.to_timedelta(np.arange(3), unit="d"),
+            "timy": pd.to_timedelta(np.arange(3), unit="D"),
             "caty": [["aaa", "bbb", "ccc"], ["a"], []],
         }
     )

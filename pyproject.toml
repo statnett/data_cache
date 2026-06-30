@@ -15,8 +15,8 @@ dependencies = [
   "h5py",
 ]
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
   "pre-commit",
   "pytest",
   "pathos"
