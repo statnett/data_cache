@@ -62,7 +62,7 @@ class PandasGroup:
 
 class PandasStore(pd.HDFStore):
     def create_dataset(self, key: str, data: pd.DataFrame) -> None:
-        data.to_hdf(path_or_buf=super(), key=key)
+        data.to_hdf(path_or_buf=self, key=key)
 
     def __getitem__(self, key: str) -> PandasGroup:
         return PandasGroup(self, key)
