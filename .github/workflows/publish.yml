@@ -22,7 +22,7 @@ jobs:
       - name: build package
         run: uv build
       - name: Publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1.12
+        uses: pypa/gh-action-pypi-publish@76f52bc884231f62b9a034ebfe128415bbaabdfc # release/v1.12
         with:
           verbose: 'true'
           attestations: 'false'
